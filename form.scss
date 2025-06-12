@@ -1,0 +1,24 @@
+// I may need to change align-items from center to flex-start if some input elements are next to each other
+
+input,
+textarea {
+  &:focus {
+    outline: 1px solid var(--primary);
+  }
+
+  &.invalid {
+    outline: 1px solid red;
+  }
+}
+
+.input-error-message {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 4px;
+  display: none;
+}
+
+.required {
+  display: contents;
+  color: red;
+}
