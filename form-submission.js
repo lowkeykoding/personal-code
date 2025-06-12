@@ -35,6 +35,7 @@ function showToast(message) {
       transform: translateX(-50%);
       background: #4caf50;
       color: white;
+      text-align: center;
       padding: 12px 24px;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
