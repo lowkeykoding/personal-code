@@ -1,0 +1,69 @@
+// your transforms map
+$anims: (
+    "fade": none,
+    "slide-up": translateY(40px),
+    "slide-left": translateX(40px),
+    "slide-right": translateX(-40px),
+    "zoom-in": scale(0.8),
+    "zoom-out": scale(1.2),
+);
+
+// 1a) breakpoints
+$tablet-min: 48rem;
+$small-desktop-min: 64rem;
+$large-desktop-min: 81.25rem;
+
+// 1b) base rules (apply at ALL sizes)
+@each $name, $transform in $anims {
+    .an-#{$name} {
+        opacity: 0;
+        transform: $transform;
+        transition:
+            opacity var(--an-duration, 1s) ease,
+            transform var(--an-duration, 1s) ease;
+
+        &.in-view {
+            opacity: 1;
+            transform: none;
+        }
+    }
+}
+
+// 2a) tablet overrides
+@media (min-width: $tablet-min) {
+    @each $name, $transform in $anims {
+        .an-#{$name}-t {
+            transform: $transform !important;
+
+            &.in-view {
+                transform: none !important;
+            }
+        }
+    }
+}
+
+// 2b) small‑desktop overrides
+@media (min-width: $small-desktop-min) {
+    @each $name, $transform in $anims {
+        .an-#{$name}-sd {
+            transform: $transform !important;
+
+            &.in-view {
+                transform: none !important;
+            }
+        }
+    }
+}
+
+// 2c) large‑desktop overrides
+@media (min-width: $large-desktop-min) {
+    @each $name, $transform in $anims {
+        .an-#{$name}-ld {
+            transform: $transform !important;
+            
+            &.in-view {
+                transform: none !important;
+            }
+        }
+    }
+}
