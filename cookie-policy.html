@@ -1,0 +1,135 @@
+---
+title: "Cookie Policy | Your Privacy and Cookie Settings"
+description: "Our Cookie Policy explains how cookies work, why we use them, and how you can manage your preferences for a safe and personalized experience."
+pageTitle: "Cookie Policy"
+preloadImg: ""
+permalink: "cookie-policy/"
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/cookie-policy.css" />
+{% endblock %}
+
+{% block body %}
+    {% include "components/banner.html" %}
+
+    <!-- ============================================ -->
+    <!--                 Content Page                 -->
+    <!-- ============================================ -->
+
+    <section id="content-page-1399">
+        <div class="cs-container">
+            <div class="cs-content an-fade">
+                <p>Last Updated: {% year %}</p>
+                <p>
+                    This Cookie Policy explains how
+                    <strong>{{ client.name }}</strong> (&quot;we,&quot;
+                    &quot;us,&quot; or &quot;our&quot;) uses cookies and similar
+                    tracking technologies on
+                    <strong>{{ client.domain }}</strong> (the
+                    &quot;Website&quot;).
+                </p>
+                <p><strong>1. What Are Cookies?</strong></p>
+                <p>
+                    Cookies are small text files stored on your device when you
+                    visit a website. They help us understand how users interact
+                    with the Website and enable certain functionalities.
+                </p>
+                <p><strong>2. Types of Cookies We Use</strong></p>
+                <p>We use the following type of cookie on our Website:</p>
+                <ul>
+                    <li>
+                        <strong>Analytics Cookies:</strong> We use Google
+                        Analytics to collect information about how visitors use
+                        our Website. These cookies collect data such as pages
+                        visited, time spent on the site, and the type of device
+                        used. This helps us improve the Website and user
+                        experience. Google Analytics cookies may collect IP
+                        addresses and generate reports on Website usage without
+                        identifying individual users.
+                    </li>
+                </ul>
+                <p><strong>3. Managing Your Cookie Preferences</strong></p>
+                <p>
+                    Upon your first visit, a cookie banner will prompt you to
+                    accept or decline non-essential cookies. You can change your
+                    preferences at any time by clicking the
+                    <strong>&quot;Cookie Settings&quot;</strong> link located in
+                    the footer of the Website. This will reopen the cookie
+                    banner, allowing you to accept or decline cookies.
+                </p>
+                <p>
+                    You can also manage cookies through your browser settings.
+                    Most browsers allow you to block or delete cookies. Note
+                    that disabling cookies may affect some functionalities of
+                    the Website.
+                </p>
+                <p><strong>4. Third-Party Cookies</strong></p>
+                <p>
+                    The only third-party cookies in use on our Website are those
+                    set by Google Analytics. To learn more about how Google
+                    collects and processes data, please visit:
+                    <a
+                        href="https://policies.google.com/technologies/partner-sites"
+                        >https://policies.google.com/technologies/partner-sites</a
+                    >
+                </p>
+                <p>
+                    To opt out of Google Analytics tracking, you can install the
+                    Google Analytics Opt-out Browser Add-on:
+                    <a href="https://tools.google.com/dlpage/gaoptout"
+                        >https://tools.google.com/dlpage/gaoptout</a
+                    >
+                </p>
+                <p><strong>5. Your Rights (California Residents)</strong></p>
+                <p>
+                    Under the California Consumer Privacy Act (CCPA) and the
+                    California Privacy Rights Act (CPRA), California residents
+                    have the right to:
+                </p>
+                <ul>
+                    <li>
+                        Know what personal information we collect and how we use
+                        it.
+                    </li>
+                    <li>Request deletion of your personal information.</li>
+                    <li>
+                        Opt out of the sale or sharing of your personal
+                        information.
+                    </li>
+                </ul>
+                <p>
+                    Although we do not sell personal information, we honor your
+                    cookie preferences in accordance with applicable law.
+                </p>
+                <p>
+                    To exercise your rights, please contact us at:
+                    <strong>{{ client.email }}</strong>
+                </p>
+                <p><strong>6. Changes to This Policy</strong></p>
+                <p>
+                    We may update this Cookie Policy from time to time. Changes
+                    will be posted on this page with an updated &quot;Last
+                    Updated&quot; date.
+                </p>
+                <p><strong>7. Contact Us</strong></p>
+                <p>
+                    If you have any questions about this Cookie Policy, please
+                    contact us at:
+                </p>
+                <p>
+                    <strong>{{ client.name }}</strong><br />
+                    <strong>{{ client.email }}</strong><br />
+                    <!-- Adreess below is optional -->
+                    <strong
+                        >{{ client.address.lineOne }},
+                        {{ client.address.city }}, {{ client.address.state }}
+                        {{ client.address.zip }}</strong
+                    >
+                </p>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,140 @@
+<!-- Replace the popup code with this code below to include the decline button. -->
+<!-- --------------------------------------------------------------
+<div id="popup-2064">
+  <div class="cs-container">
+    <div class="cs-content">
+      <div class="cs-flex">
+        <h3 class="cs-h3">This website uses cookies</h3>
+        <p class="cs-text">
+          This website uses cookies. By using our website you consent to all
+          cookies in accordance with our Cookie Policy.
+          <a class="cs-link" href="/cookie-policy">Read More</a>
+        </p>
+      </div>
+      <button class="cs-button-solid cs-accept">Accept</button>
+      <button class="cs-button-solid cs-decline">Decline</button>
+    </div>
+  </div>
+</div> 
+-------------------------------------------------------------- -->
+
+<!-- Replace the Sass code with this below in the mobile section -->
+<!-- ------------------------------------------------------------
+.cs-button-solid {
+    border: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.cs-link {
+    font-size: calc(16/16 * 1rem);
+    font-weight: 700;
+    line-height: 1.2em;
+    margin-top: calc(4/16 * 1rem);
+    color: var(--secondary);
+    display: block;
+}
+
+.cs-decline {
+    background-color: #fff;
+    color: var(--primary)
+} 
+-------------------------------------------------------------- -->
+
+<!-- Add a button on the footer for the Cookie Settings -->
+<!--
+<button id="manage-cookies-button" class="cs-bottom-link button">Cookie Settings</button>
+
+// Removes the default button styles so it looks like a link
+.bottom-link-button {
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    cursor: pointer;
+}
+-->
+
+<script defer>
+  document.addEventListener("DOMContentLoaded", function () {
+    const trackingID = "G-"; // Replace with your actual Google Analytics tracking ID
+    const localStorageKey = "cookiesAccepted";
+    const popup = document.getElementById("popup-2064");
+    const declineButton = document.querySelector(".cs-decline");
+    const acceptButton = document.querySelector(".cs-accept");
+    const manageCookiesButton = document.getElementById(
+      "manage-cookies-button"
+    );
+
+    function showPopup(delay = 0) {
+      // Set the popup to block, so we can apply the cs-show class and animate the popup into view
+      popup.style.display = "block";
+      setTimeout(function () {
+        popup.classList.add("cs-show");
+      }, delay);
+    }
+
+    // Check if the user has already accepted cookies
+    if (!localStorage.getItem(localStorageKey)) {
+      showPopup(1000);
+    }
+
+    // Function to close the popup. Add an item to localStorage to remember that the user has accepted cookies.
+    function closePopup() {
+      popup.classList.remove("cs-show");
+      localStorage.setItem(localStorageKey, "true");
+
+      // Removes the popover from the screen (visibly and through screen readers) after the transition (0.3s - in the CSS) has finished
+      setTimeout(function () {
+        popup.style.display = "none";
+      }, 300);
+    }
+
+    declineButton.addEventListener("click", () => {
+      closePopup();
+      clearAllCookies();
+    });
+
+    acceptButton.addEventListener("click", () => {
+      closePopup();
+      setCookies();
+    });
+
+    manageCookiesButton.addEventListener("click", () => {
+      localStorage.removeItem(localStorageKey);
+      showPopup();
+    });
+
+    // Implement your cookie setting logic here. This is where you would set any necessary cookies after the user has accepted the cookie policy.
+    function setCookies() {
+      // Set your cookies here
+      // Google tag (gtag.js)
+      const script = document.createElement("script");
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + trackingID;
+      script.async = true;
+      document.head.appendChild(script);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", trackingID);
+    }
+
+    // Function to clear only specific cookies
+    function clearAllCookies() {
+      // List the names of the cookies you want to clear
+      // Update this when needed
+      const cookieNames = ["_ga", "_ga_" + trackingID];
+
+      for (const name of cookieNames) {
+        // Expire the cookie by setting its date to the past
+        document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`;
+      }
+    }
+  });
+</script>
