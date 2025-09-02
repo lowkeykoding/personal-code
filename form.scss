@@ -22,3 +22,104 @@ textarea {
   display: contents;
   color: red;
 }
+
+// ----------------------------------------
+//             Checkboxes
+// ----------------------------------------
+// Style the checkboxes like this:
+//
+// <label class="checkbox">
+//     <input
+//         type="checkbox"
+//         id="{{ checkbox.name }}"
+//         value="{{ checkbox.value }}"
+//     />
+//     <span class="checkmark"></span>
+//     {{ checkbox.value }}
+// </label>
+// ----------------------------------------
+
+// Update these if needed
+$checkbox-size: 20px;
+$checkmark-color: #fff;
+$checkmark-bg: var(--primary);
+$border-color: #ccc;
+$hover-border-color: #999;
+$border-radius: 4px;
+$font-size: 16px;
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    .checkboxes {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: calc(12 / 16 * 1rem);
+        width: 100%;
+    }
+
+    .checkbox {
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+        font-size: $font-size;
+        margin-right: 20px;
+        margin-bottom: 0.75rem;
+
+        input {
+            display: none;
+
+            &:checked + .checkmark {
+                background-color: $checkmark-bg;
+                border-color: $checkmark-bg;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 1px;
+                    left: 6px;
+                    width: 10px;
+                    height: 15px;
+                    border: solid $checkmark-color;
+                    border-width: 0 3px 3px 0;
+                    transform: rotate(45deg);
+                }
+            }
+        }
+
+        .checkmark {
+            width: $checkbox-size;
+            height: $checkbox-size;
+            border: 1px solid $border-color;
+            border-radius: $border-radius;
+            background-color: #fff;
+            margin-right: 8px;
+            position: relative;
+            transition:
+                background-color 0.2s,
+                border-color 0.2s;
+
+            &:hover {
+                border-color: $hover-border-color;
+            }
+        }
+    }
+}
+
+/* Tablet */
+@media only screen and (min-width: 48rem) {
+    .checkboxes {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .checkbox {
+        flex-basis: 45%;
+    }
+}
+
+/* Small Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    .checkbox {
+        flex-basis: 43%;
+    }
+}
